@@ -176,6 +176,11 @@ ruff check .
 The tests are plain `unittest`, so `PYTHONPATH=src python3 -m unittest` works without
 pytest too.
 
+## License
+
+The code is released under the [MIT License](LICENSE). The elevation data it downloads has
+its own terms, see below.
+
 ## Data attribution
 
 Copernicus DEM © DLR e.V. 2010–2014 and © Airbus Defence and Space GmbH 2014–2018,

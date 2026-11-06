@@ -36,7 +36,7 @@ def latlon(text: str) -> tuple[float, float]:
     try:
         lat, lon = (float(v) for v in text.replace(' ', '').split(','))
     except ValueError:
-        raise argparse.ArgumentTypeError('expected "lat,lon" in decimal degrees, got %r' % text)
+        raise argparse.ArgumentTypeError('expected "lat,lon" in decimal degrees, got %r' % text) from None
     if not (-90 <= lat <= 90 and -180 <= lon <= 180):
         raise argparse.ArgumentTypeError('coordinates out of range: %r' % text)
     return lat, lon

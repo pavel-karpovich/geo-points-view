@@ -1,8 +1,16 @@
 import math
 import unittest
 
-from geo_points_view.geodesy import (R_EARTH, bearing, effective_radius, elevation_angle, great_circle, haversine,
-                                     ray_height, tangent_xy)
+from geo_points_view.geodesy import (
+    R_EARTH,
+    bearing,
+    effective_radius,
+    elevation_angle,
+    great_circle,
+    haversine,
+    ray_height,
+    tangent_xy,
+)
 
 
 class GeodesyTest(unittest.TestCase):

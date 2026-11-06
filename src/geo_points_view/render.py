@@ -57,7 +57,8 @@ def draw_svg(result: Result, profile: list[Sample], k: float, zones: Zones, lang
     exaggeration = (ph / (ymax - ymin)) / (pw / xmax)
 
     def altitude_line(alt: float, n: int = 120) -> str:
-        return ' '.join('%.1f,%.1f' % (X(x), Y(y)) for x, y in (tangent_xy(dist * i / n, alt, re) for i in range(n + 1)))
+        points = (tangent_xy(dist * i / n, alt, re) for i in range(n + 1))
+        return ' '.join('%.1f,%.1f' % (X(x), Y(y)) for x, y in points)
 
     def ray(angle: float) -> str:
         return '%.1f,%.1f %.1f,%.1f' % (X(0), Y(h0), X(xmax), Y(h0 + xmax * math.tan(angle)))
@@ -92,7 +93,8 @@ def draw_svg(result: Result, profile: list[Sample], k: float, zones: Zones, lang
         for s, x, anchor, dx in ((0, 0, 'end', -6), (dist, xmax, 'start', 6)):
             y = tangent_xy(s, alt, re)[1]
             if ymin <= y <= ymax:
-                o.append('<text x="%.1f" y="%.1f" text-anchor="%s" fill="#555">%d</text>' % (X(x) + dx, Y(y) + 4, anchor, alt))
+                o.append('<text x="%.1f" y="%.1f" text-anchor="%s" fill="#555">%d</text>'
+                         % (X(x) + dx, Y(y) + 4, anchor, alt))
     o.append('<text x="%.1f" y="%.1f" text-anchor="end" fill="#777" font-size="11">%s</text>'
              % (X(xmax) - 6, Y(end_sea) - 6, t('sea_level')))
     km_step = 10 if dist < 150_000 else 20 if dist < 300_000 else 50
