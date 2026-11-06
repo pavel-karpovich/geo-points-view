@@ -1,0 +1,5 @@
+* text=auto eol=lf
+
+# Final diagrams are images: no text diffs, no line-ending conversion, no merging.
+# A changed diagram shows up as "Binary files differ" and is replaced as a whole.
+diagrams/** binary
